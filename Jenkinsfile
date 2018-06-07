@@ -1,9 +1,12 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent any
+    tools {
+        maven 'apache-maven-3.3.9'
+    }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn install'
+                sh 'mvn clean package'
             }
         }
     }
